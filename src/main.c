@@ -172,6 +172,7 @@ char *cf_jobname;
 
 char *cf_admin_users;
 char *cf_stats_users;
+char *cf_disallowed_users;
 int cf_stats_period;
 int cf_log_stats;
 
@@ -329,6 +330,7 @@ static const struct CfKey bouncer_params [] = {
 	CF_ABS("so_reuseport", CF_INT, cf_so_reuseport, CF_NO_RELOAD, "0"),
 	CF_ABS("stats_period", CF_INT, cf_stats_period, 0, "60"),
 	CF_ABS("stats_users", CF_STR, cf_stats_users, 0, ""),
+	CF_ABS("disallowed_users", CF_STR, cf_disallowed_users, 0, ""),
 	CF_ABS("suspend_timeout", CF_TIME_USEC, cf_suspend_timeout, 0, "10"),
 	CF_ABS("syslog", CF_INT, cf_syslog, 0, "0"),
 	CF_ABS("syslog_facility", CF_STR, cf_syslog_facility, 0, "daemon"),
@@ -985,6 +987,7 @@ static void cleanup(void)
 	xfree(&cf_jobname);
 	xfree(&cf_admin_users);
 	xfree(&cf_stats_users);
+	xfree(&cf_disallowed_users);
 	xfree(&cf_client_tls_protocols);
 	xfree(&cf_client_tls_ca_file);
 	xfree(&cf_client_tls_cert_file);

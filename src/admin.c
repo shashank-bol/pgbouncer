@@ -1837,6 +1837,7 @@ bool admin_post_login(PgSocket *client)
 
 	if (cf_auth_type == AUTH_TYPE_ANY)
 		return true;
+	log_info("lolll");
 
 	if (client->admin_user || strlist_contains(cf_admin_users, username)) {
 		client->admin_user = true;

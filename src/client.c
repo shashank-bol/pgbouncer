@@ -361,6 +361,12 @@ static bool finish_set_pool(PgSocket *client, bool takeover)
 		}
 	}
 
+	char *username = client->login_user_credentials->name;
+
+	if(strlist_contains(cf_disallowed_users , username)){
+		disconnect_client(client, true, "disallowed");
+	}
+
 	if (takeover)
 		return true;
 
